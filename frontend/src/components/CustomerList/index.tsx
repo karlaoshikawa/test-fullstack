@@ -2,9 +2,13 @@
 import React, { useEffect, useState } from "react";
 import { Customer } from "../../interface/customer.interface";
 import { requestData } from "../../api";
+import CustomerEdit from "../CustomerEdit";
 
 const CustomerList = () => {
   const [customerList, setCustomerList] = useState<Customer[]>([]);
+  const [customerToUpdateId, setCustomerToUpdateId] = useState<number | null>(
+    null
+  );
 
   useEffect(() => {
     requestData("/customer")
@@ -16,6 +20,10 @@ const CustomerList = () => {
         console.error("Error fetching customer data:", error);
       });
   }, []);
+
+  const handleEditClick = (customerId: number) => {
+    setCustomerToUpdateId(customerId);
+  };
 
   return (
     <div>
@@ -30,6 +38,13 @@ const CustomerList = () => {
               <p>{customer.cpf}</p>
               <p>{customer.phone}</p>
               <p>{customer.status}</p>
+              <h3 onClick={() => handleEditClick(customer.id)}>Editar</h3>
+              {customerToUpdateId === customer.id && (
+                <div>
+                  <CustomerEdit customer={customer} />
+                  <h4 onClick={()=> setCustomerToUpdateId(null)}>fechar</h4>
+                </div>
+              )}
             </div>
           ))}
         </div>

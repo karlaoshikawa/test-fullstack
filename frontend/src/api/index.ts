@@ -12,7 +12,7 @@ export const requestData = async (endpoint: string): Promise<Customer[]> => {
 };
 
 export const requestUpdate = async (endpoint: string, body: Customer): Promise<Customer> => {
-  const { data }: AxiosResponse<Customer> = await api.post(endpoint, body);
+  const { data }: AxiosResponse<Customer> = await api.patch(endpoint, body);
   return data;
 };
 
