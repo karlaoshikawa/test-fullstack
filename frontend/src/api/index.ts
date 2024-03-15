@@ -2,8 +2,9 @@ import axios, { AxiosResponse } from "axios";
 import { Customer } from '../interface/customer.interface';
 
 const api = axios.create({
-  baseURL: "https://localhost4000/customer",
+  baseURL: "http://localhost:4000",
 });
+
 
 export const requestData = async (endpoint: string): Promise<Customer[]> => {
   const { data }: AxiosResponse<Customer[]> = await api.get(endpoint);
