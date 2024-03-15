@@ -1,16 +1,17 @@
+"use client";
 import React from "react";
 import Header from "../../components/Header";
 import InfosPage from "@/components/InfosPage";
-import CustomerList from "@/components/CustomerList";
+import CustomerRegister from "@/components/CustomerRegister";
 
-const Home: React.FC = () => {
- return (
+const register: React.FC = () => {
+  return (
     <div>
       <Header />
       <InfosPage />
-      <CustomerList />
+      <CustomerRegister />
     </div>
   );
 };
 
-export default Home;
+export default register;

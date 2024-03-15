@@ -6,3 +6,7 @@ export interface Customer {
   phone: string;
   status: 'ativo' | 'inativo' | 'aguardando_ativacao' | 'desativado'; 
 }
+
+export type CreateCustomer = Omit<Customer, "id">;
+
+
