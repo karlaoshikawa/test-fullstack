@@ -1,0 +1,98 @@
+@import "variables";
+
+.customerList_container {
+  max-width: 120rem;
+  display: flex;
+  flex-direction: column;
+  color: $text-color;
+  font-size: 1.6rem;
+
+  .customerList_top_container {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 4rem;
+
+    h2 {
+      color: $secondary-color;
+      font-weight: 500;
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      padding-top: 1.6rem;
+      font-weight: 400;
+    }
+
+    .customerList_newclient_button {
+      color: $white;
+      font-weight: 400;
+      border-radius: 6px;
+      background-color: $button-color;
+      padding: 0.9rem 1.5rem;
+      height: fit-content;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: $white;
+        color: $button-color;
+        border: 2px solid $button-color;
+      }
+      &:active {
+        transform: scale(0.95); 
+      }
+    }
+  }
+  .customerList_customer_box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) auto;
+    justify-items: start;
+    align-items: center;
+    border: 2px solid $border-color;
+    margin-bottom: 2rem;
+
+    .customerList_customer_item:first-child {
+      padding-left: 3rem;
+    }
+    .customerList_customer_item {
+      padding: 2.2rem 0;
+
+      .customerList_customer_name_cpf {
+        font-weight: 500;
+        color: $terciary-color;
+        padding-bottom: 0.5rem;
+      }
+    }
+
+    .customerList_status {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .customerList_customer_edit_buttom {
+      padding: 1.2rem 4rem;
+      font-weight: 400;
+      background-color: $white;
+      color: $button-color;
+      border: 2px solid $button-color;
+      margin-right: 3rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: $button-color;
+        color: $white;
+      }
+      &:active {
+        transform: scale(0.95); 
+      }
+    }
+  }
+
+  .customerList_total_customers {
+    font-weight: 400;
+    padding: 2rem 0 7rem;
+  }
+}

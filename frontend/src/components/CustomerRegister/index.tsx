@@ -1,5 +1,5 @@
 import React from "react";
-import { CreateCustomer, Customer } from "../../interface/customer.interface";
+import { CreateCustomer } from "../../interface/customer.interface";
 import { requestRegister } from "../../api";
 import ReusableForm from "../ReusableForm";
 

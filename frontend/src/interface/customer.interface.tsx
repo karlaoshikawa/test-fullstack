@@ -4,7 +4,7 @@ export interface Customer {
   email: string;
   cpf: string;
   phone: string;
-  status: 'ativo' | 'inativo' | 'aguardando_ativacao' | 'desativado'; 
+  status: ('ativo' | 'inativo' | 'aguardando_ativacao' | 'desativado') | undefined; 
 }
 
 export type CreateCustomer = Omit<Customer, "id">;
