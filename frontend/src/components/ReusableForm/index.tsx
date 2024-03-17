@@ -11,8 +11,10 @@ import useFormErrors from "@/utils/useFormErrors";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import style from "./reusableForm.module.scss"
 
 type ReusableFormProps = {
+  buttonType: String;
   data?: CreateCustomer;
   handleSubmit: (customer: CreateCustomer) => void;
 };
@@ -26,6 +28,7 @@ const emptyUserData: CreateCustomer = {
 };
 
 export default function ReusableForm({
+  buttonType,
   data,
   handleSubmit,
 }: ReusableFormProps) {
@@ -108,7 +111,7 @@ export default function ReusableForm({
         setUserCpf("");
       } else {
         notify;
-        console.log("não salvo");
+        console.error("não salvo");
       }
     };
 
@@ -116,10 +119,10 @@ export default function ReusableForm({
   };
 
   return (
-    <div>
+    <div className={style.reusableForm_container}>
       <ToastContainer />
-      <form onSubmit={onSubmit}>
-        <div>
+      <form className={style.reusableForm_form_container} onSubmit={onSubmit}>
+        <div className={style.reusableForm_input_box}>
           <input
             placeholder="Nome"
             type="text"
@@ -178,7 +181,7 @@ export default function ReusableForm({
             onChange={handleDataChange}
             required
           >
-            <option  selected={userData.status ? false : true} hidden>
+            <option selected={userData.status ? false : true} hidden>
               Status
             </option>
             <option value="ativo">Ativo</option>
@@ -188,9 +191,11 @@ export default function ReusableForm({
           </select>
         </div>
         {errors.status && <h6>{errors.status}</h6>}
-        <button type="submit">Salvar</button>
+        <div className={style.reusableForm_buttons}>
+          <button type="submit">{buttonType}</button>
+          <h4 onClick={() => router.push("/")}>Voltar</h4>
+        </div>
       </form>
-      <h4 onClick={() => router.push("/")}>Voltar</h4>
     </div>
   );
 }

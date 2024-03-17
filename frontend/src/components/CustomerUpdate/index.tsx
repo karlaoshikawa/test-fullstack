@@ -4,6 +4,8 @@ import { requestOne, requestUpdate } from "@/api";
 import ReusableForm from "@/components/ReusableForm";
 import { Customer, CreateCustomer } from "@/interface/customer.interface";
 import { useEffect, useState, useCallback, useMemo } from "react";
+import style from "./customerUpdate.module.scss"
+import { data } from "jquery";
 
 export default function CustomerUpdate({ id }: { id: string }) {
   const [userData, setUserData] = useState<Customer>();
@@ -22,8 +24,14 @@ export default function CustomerUpdate({ id }: { id: string }) {
   }, [fetchUserData]);
 
   return (
-    <>
-      <ReusableForm handleSubmit={onSubmit} data={ userData } />
-    </>
+    <div className={style.customerUpdate_container}>
+      <h2>Atualisar as informações do usuário</h2>
+      <h3>Informe os campos a seguir para alterar usuário:</h3>
+      <ReusableForm
+        handleSubmit={onSubmit}
+        data={userData}
+        buttonType="Update"
+      />
+    </div>
   );
 }

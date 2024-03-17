@@ -1,0 +1,89 @@
+@import "variables";
+
+.reusableForm_container {
+  margin-top: 5.5rem;
+
+  &:focus {
+    outline: none;
+    border-color: $secondary-color;
+  }
+
+  .reusableForm_form_container {
+    input,
+    select {
+      font-size: 1.8rem;
+      padding: 1.6rem;
+      border-radius: 6px;
+      border: 2px solid $border-color;
+      width: 30rem;
+      color: $text-color;
+      margin-bottom: 1.8rem;
+
+      &:focus {
+        border-color: $primary-color;
+      }
+
+      &::placeholder {
+        color: $text-color;
+        font-size: 1.8rem;
+      }
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("../../images/arrow-grey.png");
+      background-repeat: no-repeat;
+      background-position: calc(100% - 15px) center;
+      background-size: 2rem;
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .reusableForm_buttons {
+      display: flex;
+      gap: 2rem;
+
+      button,
+      h4 {
+        font-weight: 400;
+        font-size: 1.8rem;
+        margin-top: 8rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        border: 2px solid $button-color;
+        
+      }
+
+      button {
+        padding: 1.2rem 6rem;
+        background-color: $button-color;
+        color: $white;
+
+        &:hover {
+          background-color: $white;
+          color: $button-color;
+        }
+      }
+
+      h4 {
+        padding: 1.2rem 0;
+        background-color: $white;
+        color: $button-color;
+        text-align: center;
+        width: 16rem;
+
+        &:hover {
+          background-color: $button-color;
+          color: $white;
+        }
+      }
+
+      button:active,
+      h4:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}
