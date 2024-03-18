@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { CreateCustomer, Customer } from '../interface/customer.interface';
 
 const api = axios.create({
-  baseURL: "http://localhost:4000",
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 });
 
 
