@@ -7,6 +7,10 @@
   color: $text-color;
   font-size: 1.6rem;
 
+  a {
+    text-decoration: none;
+  }
+
   .customerList_top_container {
     display: flex;
     justify-content: space-between;
@@ -39,7 +43,7 @@
         border: 2px solid $button-color;
       }
       &:active {
-        transform: scale(0.95); 
+        transform: scale(0.95);
       }
     }
   }
@@ -86,7 +90,7 @@
         color: $white;
       }
       &:active {
-        transform: scale(0.95); 
+        transform: scale(0.95);
       }
     }
   }

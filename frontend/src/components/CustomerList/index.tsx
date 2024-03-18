@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Customer } from "../../interface/customer.interface";
 import { requestData } from "../../api";
 import { FaCircle } from "react-icons/fa";
@@ -8,8 +8,6 @@ import style from "./customerList.module.scss";
 
 const CustomerList = () => {
   const [customerList, setCustomerList] = useState<Customer[]>([]);
-
-  const router = useRouter();
 
   useEffect(() => {
     requestData("/customer")
@@ -22,15 +20,9 @@ const CustomerList = () => {
       });
   }, []);
 
-  const handleEditClick = (customerId: number) => {
-    router.push(`/update/${customerId}`);
-  };
-
-  const handleCustomerRegister = () => {
-    router.push("/register");
-  };
-
-  const getStatusInfo = (status: string | undefined): { status: string; color: string } => {
+  const getStatusInfo = (
+    status: string | undefined
+  ): { status: string; color: string } => {
     switch (status) {
       case "ativo":
         return { status: "Ativo", color: "#4aad5a" };
@@ -50,12 +42,9 @@ const CustomerList = () => {
           <h2>Listagem de usuários</h2>
           <h3>Escolha um cliente para vizualizar os detalhes</h3>
         </div>
-        <p
-          onClick={handleCustomerRegister}
-          className={style.customerList_newclient_button}
-        >
-          Novo cliente
-        </p>
+        <Link href="/register">
+          <p className={style.customerList_newclient_button}>Novo cliente</p>
+        </Link>
       </div>
       {customerList.length === 0 ? (
         <p>Loading...</p>
@@ -81,12 +70,14 @@ const CustomerList = () => {
                 <FaCircle color={getStatusInfo(customer.status).color} />
                 <p>{getStatusInfo(customer.status).status}</p>
               </div>
-              <p
-                className={style.customerList_customer_edit_buttom}
-                onClick={() => handleEditClick(customer.id)}
+              <Link
+                href={`/update/${customer.id}`}
+                data-testid={`edit-button-${customer.id}`}
               >
-                Editar
-              </p>
+                <p className={style.customerList_customer_edit_buttom}>
+                  Editar
+                </p>
+              </Link>
             </div>
           ))}
         </div>

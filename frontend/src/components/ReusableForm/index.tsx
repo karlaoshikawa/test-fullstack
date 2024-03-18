@@ -8,10 +8,9 @@ import {
   validatePhone,
 } from "../../utils/validations";
 import useFormErrors from "@/utils/useFormErrors";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/navigation";
-import style from "./reusableForm.module.scss"
+import style from "./reusableForm.module.scss";
+import Link from "next/link";
 
 type ReusableFormProps = {
   buttonType: String;
@@ -32,8 +31,6 @@ export default function ReusableForm({
   data,
   handleSubmit,
 }: ReusableFormProps) {
-  const router = useRouter();
-  const notify = () => toast("Wow so easy !");
   const { errors, setError, clearError } = useFormErrors({});
   const [userData, setUserData] = useState<CreateCustomer>(emptyUserData);
   const [userCpf, setUserCpf] = useState<string>(userData.cpf);
@@ -93,9 +90,8 @@ export default function ReusableForm({
       const phoneError = !validatePhone(phone)
         ? "Número de telefone inválido"
         : null;
-      const statusError = userData.status === undefined
-        ? "Escolha um status"
-        : null;
+      const statusError =
+        userData.status === undefined ? "Escolha um status" : null;
 
       setError("cpf", cpfError as string);
       setError("name", nameError as string);
@@ -104,13 +100,16 @@ export default function ReusableForm({
       setError("status", statusError as string);
 
       const hasErrors =
-        !!cpfError || !!nameError || !!emailError || !!phoneError || !!statusError;
+        !!cpfError ||
+        !!nameError ||
+        !!emailError ||
+        !!phoneError ||
+        !!statusError;
       if (!hasErrors) {
         handleSubmit(userData);
         setUserData(emptyUserData);
         setUserCpf("");
       } else {
-        notify;
         console.error("não salvo");
       }
     };
@@ -120,7 +119,6 @@ export default function ReusableForm({
 
   return (
     <div className={style.reusableForm_container}>
-      <ToastContainer />
       <form className={style.reusableForm_form_container} onSubmit={onSubmit}>
         <div className={style.reusableForm_input_box}>
           <input
@@ -193,7 +191,9 @@ export default function ReusableForm({
         {errors.status && <h6>{errors.status}</h6>}
         <div className={style.reusableForm_buttons}>
           <button type="submit">{buttonType}</button>
-          <h4 onClick={() => router.push("/")}>Voltar</h4>
+          <Link href="/">
+            <h4>Voltar</h4>
+          </Link>
         </div>
       </form>
     </div>

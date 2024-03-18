@@ -3,9 +3,20 @@
 .reusableForm_container {
   margin-top: 5.5rem;
 
+ a {
+    text-decoration: none;
+}
+
   &:focus {
     outline: none;
     border-color: $secondary-color;
+  }
+
+  h6{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #ff0000;
+    margin: -1rem 0 1.8rem ;
   }
 
   .reusableForm_form_container {
@@ -53,7 +64,6 @@
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
         border: 2px solid $button-color;
-        
       }
 
       button {
