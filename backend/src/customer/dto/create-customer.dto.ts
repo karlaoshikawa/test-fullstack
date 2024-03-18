@@ -1,4 +1,11 @@
-import { IsEmail, IsIn, IsString, Matches, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsIn,
+  IsString,
+  Matches,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 
 export class CreateCustomerDto {
   @IsString()
@@ -12,6 +19,9 @@ export class CreateCustomerDto {
   @Matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, { message: 'CPF inválido' })
   cpf: string;
 
+  @IsString()
+  @MinLength(10, { message: 'O nome precisa ter no mínimo 10 caracteres' })
+  @MaxLength(11, { message: 'O nome precisa ter no máximo 11 caracteres' })
   phone: string;
 
   @IsIn(['ativo', 'inativo', 'aguardando_ativacao', 'desativado'], {
