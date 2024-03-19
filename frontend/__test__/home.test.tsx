@@ -8,7 +8,6 @@ import MeuComponente from "../src/app/Home";
 
 jest.mock("../src/api", () => ({
   requestData: jest.fn((url) => {
-    console.log("Chamada requestData com URL:", url);
     return Promise.resolve([]);
   }),
 }));
@@ -38,7 +37,6 @@ describe("CustomerList", () => {
     (requestData as jest.Mock).mockResolvedValueOnce([]);
 
     const { getByText } = render(<CustomerList />);
-    console.log(getByText("Loading..."));
 
     expect(getByText("Loading...")).toBeInTheDocument();
     expect(requestData).toHaveBeenCalledWith("/customer");
@@ -56,22 +54,4 @@ describe("CustomerList", () => {
     expect(getByText("Exibindo 1 clientes")).toBeInTheDocument();
     expect(requestData).toHaveBeenCalledWith("/customer");
   });
-
-  // it('deve navegar para a página de edição quando o botão "Editar" é clicado', async () => {
-  //   (requestData as jest.Mock).mockResolvedValueOnce(mockCustomerList);
-
-  //   const { getByTestId, getByText } = render(<MeuComponente />);
-
-  //   await waitFor(() => {
-  //     expect(getByText("John Doe")).toBeInTheDocument();
-  //   });
-
-  //   const rota = getByTestId("edit-button-1");
-  //   await waitFor(async () => {
-  //     await userEvent.click(rota);
-  //   });
-  //   console.log({ windowurl: window.location.pathname });
-
-  //   expect(push).toHaveBeenCalled();
-  // });
 });

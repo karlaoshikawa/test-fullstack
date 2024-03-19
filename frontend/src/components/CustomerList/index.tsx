@@ -12,7 +12,6 @@ const CustomerList = () => {
   useEffect(() => {
     requestData("/customer")
       .then((res) => {
-        console.log(res);
         setCustomerList(res);
       })
       .catch((error) => {
