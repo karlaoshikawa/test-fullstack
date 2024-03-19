@@ -5,7 +5,6 @@ import ReusableForm from "@/components/ReusableForm";
 import { Customer, CreateCustomer } from "@/interface/customer.interface";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import style from "./customerUpdate.module.scss"
-import { data } from "jquery";
 
 export default function CustomerUpdate({ id }: { id: string }) {
   const [userData, setUserData] = useState<Customer>();
