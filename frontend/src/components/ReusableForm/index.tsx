@@ -23,7 +23,7 @@ const emptyUserData: CreateCustomer = {
   cpf: "",
   email: "",
   phone: "",
-  status: undefined,
+  status: "",
 };
 
 export default function ReusableForm({
@@ -31,9 +31,15 @@ export default function ReusableForm({
   data,
   handleSubmit,
 }: ReusableFormProps) {
-  const { errors, setError, clearError } = useFormErrors({});
+  const { errors, setError } = useFormErrors({});
   const [userData, setUserData] = useState<CreateCustomer>(emptyUserData);
   const [userCpf, setUserCpf] = useState<string>(userData.cpf);
+  const [successSubmit, setSuccessSubmit] = useState<boolean>(false);
+
+  const successMessage =
+    buttonType === "Update"
+      ? "Dados do usuário atualizado com sucesso"
+      : "Novo usuário cadastrado";
 
   useEffect(() => {
     setUserData(data ?? emptyUserData);
@@ -44,6 +50,7 @@ export default function ReusableForm({
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = event.target;
+    setSuccessSubmit(false);
     setUserData({ ...userData, [name]: value });
   };
 
@@ -108,6 +115,7 @@ export default function ReusableForm({
       if (!hasErrors) {
         handleSubmit(userData);
         setUserData(emptyUserData);
+        setSuccessSubmit(true);
         setUserCpf("");
       } else {
         console.error("não salvo");
@@ -175,11 +183,11 @@ export default function ReusableForm({
           <select
             id="status"
             name="status"
-            value={userData.status}
+            defaultValue={userData.status}
             onChange={handleDataChange}
             required
           >
-            <option selected={userData.status ? false : true} hidden>
+            <option value="" hidden>
               Status
             </option>
             <option value="ativo">Ativo</option>
@@ -189,6 +197,7 @@ export default function ReusableForm({
           </select>
         </div>
         {errors.status && <h6>{errors.status}</h6>}
+        {successSubmit && <h5>{successMessage}</h5>}
         <div className={style.reusableForm_buttons}>
           <button type="submit">{buttonType}</button>
           <Link href="/">

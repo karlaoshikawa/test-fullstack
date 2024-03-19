@@ -3,20 +3,26 @@
 .reusableForm_container {
   margin-top: 5.5rem;
 
- a {
+  a {
     text-decoration: none;
-}
-
-  &:focus {
-    outline: none;
-    border-color: $secondary-color;
   }
 
-  h6{
+  h6 {
     font-size: 1.6rem;
     font-weight: 500;
     color: #ff0000;
-    margin: -1rem 0 1.8rem ;
+    margin: -1rem 0 1.8rem;
+  }
+
+  h5 {
+    font-size: 2.1rem;
+    font-weight: 500;
+    color: $button-color;
+    border-radius: 6px;
+    border: 2px solid $button-color;
+    width: 30rem;
+    padding: 2rem;
+    text-align: center;
   }
 
   .reusableForm_form_container {
@@ -31,7 +37,8 @@
       margin-bottom: 1.8rem;
 
       &:focus {
-        border-color: $primary-color;
+        outline: none;
+        border-color: $secondary-color;
       }
 
       &::placeholder {
