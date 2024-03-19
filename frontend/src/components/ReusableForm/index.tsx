@@ -174,6 +174,8 @@ export default function ReusableForm({
             onChange={handleDataChange}
             onKeyDown={handleKeyPress}
             onPaste={handlePaste}
+            minLength={10}
+            maxLength={11}
             required
           />
           {errors.phone && <h6>{errors.phone}</h6>}
@@ -182,7 +184,7 @@ export default function ReusableForm({
           <select
             id="status"
             name="status"
-            defaultValue={userData.status}
+            value={userData.status}
             onChange={handleDataChange}
             required
           >

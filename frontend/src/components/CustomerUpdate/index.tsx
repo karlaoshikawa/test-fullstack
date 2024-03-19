@@ -24,7 +24,7 @@ export default function CustomerUpdate({ id }: { id: string }) {
 
   return (
     <div className={style.customerUpdate_container}>
-      <h2>Atualisar as informações do usuário</h2>
+      <h2>Atualizar as informações do usuário</h2>
       <h3>Informe os campos a seguir para alterar usuário:</h3>
       <ReusableForm
         handleSubmit={onSubmit}
