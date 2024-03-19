@@ -5,7 +5,6 @@ const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
 });
 
-
 export const requestData = async (endpoint: string): Promise<Customer[]> => {
   const { data }: AxiosResponse<Customer[]> = await api.get(endpoint);
   return data;

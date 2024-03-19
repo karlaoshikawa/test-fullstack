@@ -42,7 +42,7 @@ export default function ReusableForm({
 
   useEffect(() => {
     setUserData(data ?? emptyUserData);
-    setUserCpf(userData.cpf);
+    setUserCpf(data ? data.cpf : "");
   }, [data]);
 
   const handleDataChange = (
