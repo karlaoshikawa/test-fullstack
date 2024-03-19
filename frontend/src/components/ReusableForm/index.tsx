@@ -8,7 +8,6 @@ import {
   validatePhone,
 } from "../../utils/validations";
 import useFormErrors from "@/utils/useFormErrors";
-import "react-toastify/dist/ReactToastify.css";
 import style from "./reusableForm.module.scss";
 import Link from "next/link";
 
